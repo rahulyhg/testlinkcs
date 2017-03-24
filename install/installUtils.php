@@ -266,8 +266,8 @@ if ($try_create_user==1 && !is_null($user_list) && count($user_list) > 0)
     	{
         
         case 'mssql':
-        //$op = _mssql_make_user_with_grants($db,$the_host,$db_name,$login,$passwd);
-        //_mssql_set_passwd($db,$login,$passwd);
+        $op = _mssql_make_user_with_grants($db,$the_host,$db_name,$login,$passwd);
+        _mssql_set_passwd($db,$login,$passwd);
         break;
 
         case 'postgres':
