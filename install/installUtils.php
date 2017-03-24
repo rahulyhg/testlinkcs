@@ -98,7 +98,7 @@ function getUserList(&$db,$db_type)
    switch($db_type)
    {
       case 'mysql':
-      $result = $db->exec_query('SELECT DISTINCT user AS user FROM user');
+      //$result = $db->exec_query('SELECT DISTINCT user AS user FROM user');
       break;
       
       case 'postgres':
@@ -249,7 +249,7 @@ switch($db_type)
 
 if( $try_create_user==1)
 {
-  $user_list = getUserList($db,$db_type);
+  //$user_list = getUserList($db,$db_type);
   $login_lc = strtolower($login);
   $msg = "ko - fatal error - can't get db server user list !!!";
 }
@@ -369,7 +369,7 @@ function check_pear_modules()
     $final_msg .= "<span class='ok'>OK!</span>";
   }
 
-  $ret = array('errors' => $errors, 'msg' => $final_msg);
+  $ret = ""
 
   return $ret;  
 } 
