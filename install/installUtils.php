@@ -369,7 +369,7 @@ function check_pear_modules()
     $final_msg .= "<span class='ok'>OK!</span>";
   }
 
-  $ret = ""
+  $ret = array('errors' => $errors, 'msg' => $final_msg);
 
   return $ret;  
 } 
