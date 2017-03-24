@@ -82,7 +82,7 @@ CREATE TABLE /*prefix*/builds (
   `active` tinyint(1) NOT NULL default '1',
   `is_open` tinyint(1) NOT NULL default '1',
   `author_id` int(10) unsigned default NULL,
-  `creation_ts` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `creation_ts` TIMESTAMP NOT NULL default '2016-11-30 11:26:36',
   `release_date` date NULL,
   `closed_on_date` date NULL,
   PRIMARY KEY  (`id`),
@@ -243,7 +243,7 @@ CREATE TABLE /*prefix*/inventory (
 	`name` VARCHAR(255) NOT NULL ,
 	`ipaddress` VARCHAR(255)  NOT NULL ,
 	`content` TEXT NULL ,
-	`creation_ts` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	`creation_ts` TIMESTAMP NOT NULL default '2016-11-30 11:26:36',
 	`modification_ts` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	PRIMARY KEY (`id`),
 	KEY /*prefix*/inventory_idx1 (`testproject_id`)
@@ -308,7 +308,7 @@ CREATE TABLE /*prefix*/req_coverage (
   `req_id` int(10) NOT NULL,
   `testcase_id` int(10) NOT NULL,
   `author_id` int(10) unsigned default NULL,
-  `creation_ts` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `creation_ts` TIMESTAMP NOT NULL default '2016-11-30 11:26:36',
   `review_requester_id` int(10) unsigned default NULL,
   `review_request_ts` TIMESTAMP NULL DEFAULT NULL,
   KEY /*prefix*/req_testcase (`req_id`,`testcase_id`)
@@ -342,7 +342,7 @@ CREATE TABLE /*prefix*/req_versions (
   `is_open` tinyint(1) NOT NULL default '1',
   `expected_coverage` int(10) NOT NULL default '1',
   `author_id` int(10) unsigned default NULL,
-  `creation_ts` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `creation_ts` TIMESTAMP NOT NULL default '2016-11-30 11:26:36',
   `modifier_id` int(10) unsigned default NULL,
   `modification_ts` datetime NOT NULL default CURRENT_TIMESTAMP,
   `log_message` text,
@@ -355,7 +355,7 @@ CREATE TABLE /*prefix*/req_relations (
   `destination_id` int(10) unsigned NOT NULL,
   `relation_type` smallint(5) unsigned NOT NULL default '1',
   `author_id` int(10) unsigned default NULL,
-  `creation_ts` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `creation_ts` TIMESTAMP NOT NULL default '2016-11-30 11:26:36',
   PRIMARY KEY  (`id`)
 ) DEFAULT CHARSET=utf8;
 
@@ -411,7 +411,7 @@ CREATE TABLE /*prefix*/tcversions (
   `preconditions` text,
   `importance` smallint(5) unsigned NOT NULL default '2',
   `author_id` int(10) unsigned default NULL,
-  `creation_ts` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `creation_ts` TIMESTAMP NOT NULL default '2016-11-30 11:26:36',
   `updater_id` int(10) unsigned default NULL,
   `modification_ts` datetime NOT NULL default  CURRENT_TIMESTAMP,
   `active` tinyint(1) NOT NULL default '1',
@@ -441,7 +441,7 @@ CREATE TABLE /*prefix*/testplan_tcversions (
   urgency smallint(5) NOT NULL default '2',
   platform_id int(10) unsigned NOT NULL default '0',
   author_id int(10) unsigned default NULL,
-  creation_ts TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  creation_ts TIMESTAMP NOT NULL default '2016-11-30 11:26:36',
   PRIMARY KEY  (id),
   UNIQUE KEY /*prefix*/testplan_tcversions_tplan_tcversion (testplan_id,tcversion_id,platform_id)
 ) DEFAULT CHARSET=utf8;
@@ -518,7 +518,7 @@ CREATE TABLE /*prefix*/user_assignments (
   `build_id` int(10) unsigned default '0',
   `deadline_ts` datetime NULL,
   `assigner_id`  int(10) unsigned default '0',
-  `creation_ts` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `creation_ts` TIMESTAMP NOT NULL default '2016-11-30 11:26:36',
   `status` int(10) unsigned default '1',
   PRIMARY KEY  (`id`),
   KEY /*prefix*/user_assignments_feature_id (`feature_id`)
@@ -607,7 +607,7 @@ CREATE TABLE /*prefix*/req_revisions (
   `expected_coverage` int(10) NOT NULL default '1',
   `log_message` text,
   `author_id` int(10) unsigned default NULL,
-  `creation_ts` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `creation_ts` TIMESTAMP NOT NULL default '2016-11-30 11:26:36',
   `modifier_id` int(10) unsigned default NULL,
   `modification_ts` datetime NOT NULL default  CURRENT_TIMESTAMP,
   PRIMARY KEY  (`id`),
@@ -631,7 +631,7 @@ CREATE TABLE /*prefix*/req_specs_revisions (
   `type` char(1) default NULL,
   `log_message` text,
   `author_id` int(10) unsigned default NULL,
-  `creation_ts` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `creation_ts` TIMESTAMP NOT NULL default '2016-11-30 11:26:36',
   `modifier_id` int(10) unsigned default NULL,
   `modification_ts` datetime NOT NULL default  CURRENT_TIMESTAMP,
   PRIMARY KEY  (`id`),
@@ -682,7 +682,7 @@ CREATE TABLE /*prefix*/text_templates (
   title varchar(100) NOT NULL,
   template_data text,
   author_id int(10) unsigned default NULL,
-  creation_ts TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  creation_ts TIMESTAMP NOT NULL default '2016-11-30 11:26:36',
   is_public tinyint(1) NOT NULL default '0',
   UNIQUE KEY idx_text_templates (type,title)
 ) DEFAULT CHARSET=utf8 COMMENT='Global Project Templates';
@@ -695,7 +695,7 @@ CREATE TABLE /*prefix*/testcase_relations (
   `destination_id` int(10) unsigned NOT NULL,
   `relation_type` smallint(5) unsigned NOT NULL default '1',
   `author_id` int(10) unsigned default NULL,
-  `creation_ts` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `creation_ts` TIMESTAMP NOT NULL default '2016-11-30 11:26:36',
   PRIMARY KEY  (`id`)
 ) DEFAULT CHARSET=utf8;
 
@@ -711,7 +711,7 @@ CREATE TABLE /*prefix*/plugins (
    `basename`  varchar(100) NOT NULL,
    `enabled` tinyint(1) NOT NULL default '0',
    `author_id` int(10) unsigned default NULL,
-   `creation_ts` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+   `creation_ts` TIMESTAMP NOT NULL default '2016-11-30 11:26:36',
    PRIMARY KEY (`id`)
 ) DEFAULT CHARSET=utf8;
 
@@ -722,6 +722,6 @@ CREATE TABLE /*prefix*/plugins_configuration (
   `config_type` int(11) NOT NULL,
   `config_value` varchar(255) NOT NULL,
   `author_id` int(10) unsigned default NULL,
-  `creation_ts` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `creation_ts` TIMESTAMP NOT NULL default '2016-11-30 11:26:36',
   PRIMARY KEY (`id`)
 ) DEFAULT CHARSET=utf8;
