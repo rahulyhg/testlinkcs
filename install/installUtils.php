@@ -98,7 +98,7 @@ function getUserList(&$db,$db_type)
    switch($db_type)
    {
       case 'mysql':
-      //$result = $db->exec_query('SELECT DISTINCT user AS user FROM user');
+      $result = $db->exec_query('SELECT DISTINCT user AS user FROM user');
       break;
       
       case 'postgres':
@@ -249,7 +249,7 @@ switch($db_type)
 
 if( $try_create_user==1)
 {
-  //$user_list = getUserList($db,$db_type);
+  $user_list = getUserList($db,$db_type);
   $login_lc = strtolower($login);
   $msg = "ko - fatal error - can't get db server user list !!!";
 }
@@ -266,8 +266,8 @@ if ($try_create_user==1 && !is_null($user_list) && count($user_list) > 0)
     	{
         
         case 'mssql':
-        $op = _mssql_make_user_with_grants($db,$the_host,$db_name,$login,$passwd);
-        _mssql_set_passwd($db,$login,$passwd);
+        //$op = _mssql_make_user_with_grants($db,$the_host,$db_name,$login,$passwd);
+        //_mssql_set_passwd($db,$login,$passwd);
         break;
 
         case 'postgres':
